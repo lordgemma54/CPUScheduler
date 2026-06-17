@@ -35,10 +35,24 @@
 #include "print.h"
 #include "open.h"
 #include "read.h"
-
+#include "user_input.h"
 
 int main( int argc, char *argv[] )  {
     
+    // ADDED
+    user_input_t current_input;
+
+    // input validation for these 
+    printf("Enter file name: ");
+    scanf("%s", &current_input.file_name);
+
+    printf("Enter policy type: ");
+    scanf("%s", &current_input.policy);
+
+    printf("Enter time quantum: ");
+    scanf("%d", current_input.quantum);
+    // END ADD
+
 
     char *file_name; /* file name from the commandline */
     FILE *fp; /* file descriptor */

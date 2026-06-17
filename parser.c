@@ -4,6 +4,7 @@
 #include <string.h>
 #include <time.h>
 #include <errno.h>
+#include "user_input.h"
 
 #define INPUTARGS 16
 
@@ -16,6 +17,12 @@ static struct {
     {"SRTF",    srtf_policy},
     {NULL,      NULL}
 };
+
+void capture_input(const user_input_t *inputs) {
+    printf("filename: %s\n", inputs->file_name);
+    printf("policy: %s\n", inputs->policy);
+    printf("quantum: %s\n", inputs ->quantum);
+}
 
 int cmd__line_parser(char *cmd){
     time_t beforeMS, afterMS, millis;
@@ -67,7 +74,7 @@ int cmd__line_parser(char *cmd){
     }
 
 // =====================================================================
-// TEST HARNESS: Temporarily included for debuggin purposes
+// TESTING: Temporarily included for debugginf purposes
 // =====================================================================
 int main(void) {
     char test_input1[] = "FCFS task.list 10";
