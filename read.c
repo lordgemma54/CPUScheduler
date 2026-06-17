@@ -17,5 +17,3 @@ read_file(FILE *file_descriptor, task_t task_list[], int *size)
     }
     *size = num;
 }
-
-

@@ -1,10 +1,25 @@
+#include <stdio.h> // required for file IO
+#include <stdlib.h>
+#include <stdint.h>
+#include <string.h>
+#include <time.h>
+#include <errno.h>
 
-#define INPUTARGS = 16
+#define INPUTARGS 16
 
+static struct {
+    const char *name;
+    int(*func)(int nargs, char **args);
+} cmdtable[] = {
+    {"FCFS",    fcfs_policy},
+    {"RR",      rr_policy},
+    {"SRTF",    srtf_policy},
+    {NULL,      NULL}
+};
 
 int cmd__line_parser(char *cmd){
     time_t beforeMS, afterMS, millis;
-    u_int32_t beforeMsec, afterMsec, msecs
+    uint32_t beforeMsec, afterMsec, msecs;
     char *args[INPUTARGS]; // array of string pointers, each entry = word
     int nargs = 0;  // counter tracks how many valid values in inputArgs
     char *word;
