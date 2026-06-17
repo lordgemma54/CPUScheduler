@@ -6,7 +6,7 @@ int
 open_file(char *name, FILE **file_descriptor)
 {
     if (! (*file_descriptor = fopen(name, "r"))) {
-        printf("File %s can't be opened. Please retry ...\n");
+        printf("File %s can't be opened. Please retry ...\n", name);
         return 1;
     }
 

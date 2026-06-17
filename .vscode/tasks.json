@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-Wall",
+                "${workspaceFolder}/scheduler.c",
+                "${workspaceFolder}/open.c",
+                "${workspaceFolder}/read.c",
+                "${workspaceFolder}/print.c",
+                "-o",
+                "${workspaceFolder}/test"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Generated task to build all .c files with GCC"
+        }
+    ]
+}

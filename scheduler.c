@@ -36,12 +36,15 @@
 #include "open.h"
 #include "read.h"
 
+
 int main( int argc, char *argv[] )  {
+    
+
     char *file_name; /* file name from the commandline */
     FILE *fp; /* file descriptor */
     task_t task_array[MAX_TASK_NUM];
 
-    int error_code;
+     int error_code;
     u_int i;
     u_int count;
 

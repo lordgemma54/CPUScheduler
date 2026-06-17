@@ -50,7 +50,7 @@ int main( int argc, char *argv[] )  {
     
     file_name = argv[1];
     if (! (fp = fopen(file_name, "r"))) {
-        printf("File %s can't be opened. Please retry ...\n");
+        printf("File %s can't be opened. Please retry ...\n", file_name);
         return EXIT_FAILURE;
     }
 
