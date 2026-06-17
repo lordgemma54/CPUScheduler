@@ -65,3 +65,19 @@ int cmd__line_parser(char *cmd){
     return EINVAL;
 
     }
+
+// =====================================================================
+// TEST HARNESS: Temporarily included for debuggin purposes
+// =====================================================================
+int main(void) {
+    char test_input1[] = "FCFS task.list 10";
+    char test_input2[] = "INVALID_COMMAND";
+
+    printf("--- Testing Valid Command ---\n");
+    cmd__line_parser(test_input1);
+
+    printf("\n--- Testing Invalid Command ---\n");
+    cmd__line_parser(test_input2);
+
+    return 0;
+}
