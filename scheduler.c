@@ -37,6 +37,8 @@
 #include "read.h"
 #include "user_input.h"
 #include "fcfs_policy.h"
+#include "rr_policy.h"
+#include "srtf_policy.h"
 
 int main( int argc, char *argv[] )  {
    
@@ -113,6 +115,14 @@ int main( int argc, char *argv[] )  {
 
     if(strcmp(choice.policy, "FCFS") == 0) {
         fcfs_policy(task_array, task_count);
+    }
+
+    if(strcmp(choice.policy, "RR") == 0) {
+        rr_policy(task_array, task_count, choice.quantum);
+    }
+
+    if(strcmp(choice.policy, "SRTF") == 0) {
+        srtf_policy(task_array, task_count);
     }
     
     

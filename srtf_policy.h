@@ -3,6 +3,6 @@
 
 #include "scheduler.h"
 
-void srtf_policy(task_t task_list, int size);
+void srtf_policy(task_t task_list[], int size);
 
 #endif
