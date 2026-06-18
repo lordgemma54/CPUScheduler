@@ -12,6 +12,10 @@ void fcfs_policy(task_t task_list[], int size) {
     task_t finished_tasks[MAX_TASK_NUM];
     int finish_count = 0;
 
+    // printf("%d tasks were loaded from \"%s\". Press Enter to continue...\n", size, file_name);
+    
+    // getchar();
+
     while(finish_count < size) { //preps ready queue
         for (int i = 0; i < size; i++) {
             if(task_list[i].arrival_time == clock) {
@@ -56,6 +60,11 @@ void fcfs_policy(task_t task_list[], int size) {
 
 //testing
 
+// call stat_info here
+// avg wait time: 
+// avg response time:
+// avg turnaround time:
+// overall CPU usage: no idle time?
     for(int k = 0; k < finish_count; k++) {
         printf("PID: %u, Arrival: %u, Burst: %u, Response: %d, Start: %d, Finish: %d\n",
         finished_tasks[k].pid,

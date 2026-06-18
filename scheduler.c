@@ -44,7 +44,7 @@ int main( int argc, char *argv[] )  {
    
     //  scheduler should only 'route' the task array with the policy choice to the correct policy
 
-
+    printf("Usage: scheduler task_list_file [FCFS|RR|SRTF] [time_quantum]");
     // char *file_name; /* file name from the commandline */
     FILE *fp; /* file descriptor */
     task_t task_array[MAX_TASK_NUM]; // defines task_array
