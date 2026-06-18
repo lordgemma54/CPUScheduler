@@ -7,7 +7,6 @@ typedef struct input {
     int quantum;
 }user_input_t;
 
-void capture_input(const user_input_t *inputs)
+void capture_input(const user_input_t *inputs);
 
-#define USER_INPUT
 #endif

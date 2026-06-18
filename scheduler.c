@@ -36,6 +36,7 @@
 #include "open.h"
 #include "read.h"
 #include "user_input.h"
+#include "fcfs_policy.h"
 
 int main( int argc, char *argv[] )  {
     
@@ -44,13 +45,13 @@ int main( int argc, char *argv[] )  {
 
     // input validation for these 
     printf("Enter file name: ");
-    scanf("%s", &current_input.file_name);
+    scanf("%s", current_input.file_name);
 
-    printf("Enter policy type: ");
-    scanf("%s", &current_input.policy);
+    // printf("Enter policy type: ");
+    // scanf("%s", current_input.policy);
 
-    printf("Enter time quantum: ");
-    scanf("%d", current_input.quantum);
+    // printf("Enter time quantum: ");
+    // scanf("%d", current_input.quantum);
     // END ADD
 
 
@@ -73,6 +74,8 @@ int main( int argc, char *argv[] )  {
 
     read_file(fp, task_array, &count);
     print_task_list(task_array, count);
+
+    fcfs_policy(task_array, count);
 
     fclose(fp);
     return EXIT_SUCCESS;

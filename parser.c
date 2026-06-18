@@ -4,7 +4,12 @@
 #include <string.h>
 #include <time.h>
 #include <errno.h>
+#include <assert.h>
+
 #include "user_input.h"
+#include "fcfs_policy.h"
+#include "rr_policy.h"
+#include "srtf_policy.h"
 
 #define INPUTARGS 16
 
@@ -51,17 +56,17 @@ int cmd__line_parser(char *cmd){
         if(*cmdtable[i].name && !strcmp(args[0], cmdtable[i].name)) {
             assert(cmdtable[i].func != NULL);
 
-            gettime(&beforeMS, &beforeMsec);
+            // gettime(&beforeMS, &beforeMsec);
 
-            result = cmdtable[i].func(nargs, args);
+            // result = cmdtable[i].func(nargs, args);
 
-            gettime(&afterMS, &afterMsec);
+            // gettime(&afterMS, &afterMsec);
 
-            getinterval(beforeMsec, beforeMS, afterMsec, afterMS, &millis, &msecs);
+            // getinterval(beforeMsec, beforeMS, afterMsec, afterMS, &millis, &msecs);
 
-            printf("Operation took %lu.%09lu milliseconds\n",
-                    (unsigned long) millis,
-                    (unsigned long) msecs);
+            // printf("Operation took %lu.%09lu milliseconds\n",
+            //         (unsigned long) millis,
+            //         (unsigned long) msecs);
 
                 return result;
 
