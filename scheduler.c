@@ -117,13 +117,13 @@ int main( int argc, char *argv[] )  {
         fcfs_policy(task_array, task_count);
     }
 
-    if(strcmp(choice.policy, "RR") == 0) {
-        rr_policy(task_array, task_count, choice.quantum);
-    }
+    // if(strcmp(choice.policy, "RR") == 0) {
+    //     rr_policy(task_array, task_count, choice.quantum);
+    // }
 
-    if(strcmp(choice.policy, "SRTF") == 0) {
-        srtf_policy(task_array, task_count);
-    }
+    // if(strcmp(choice.policy, "SRTF") == 0) {
+    //     srtf_policy(task_array, task_count);
+    // }
     
     
 

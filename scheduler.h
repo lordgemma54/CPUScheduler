@@ -18,6 +18,12 @@ typedef struct task_info {
     u_int pid;
     u_int arrival_time;
     u_int burst_time;
+
+    // for capturing stats
+    int remaining_time;
+    int start_time;
+    int finish_time;
+    int response_time;
 } task_t;
 
 #endif
