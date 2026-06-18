@@ -49,7 +49,7 @@ int main( int argc, char *argv[] )  {
     user_input_t choice; // defines user_input struct
     int task_count = 0;
 
-    //  int error_code;
+        //  int error_code;
     // u_int i;
     // u_int count;
 
@@ -109,8 +109,12 @@ int main( int argc, char *argv[] )  {
     printf("=============================================\n\n");
     // =================================================================
 
+    // sort task_array in this file - send the sorted array to the policy
 
-
+    if(strcmp(choice.policy, "FCFS") == 0) {
+        fcfs_policy(task_array, task_count);
+    }
+    
     
 
     // read_file(fp, task_array, &count);
