@@ -40,9 +40,14 @@
 
 int main( int argc, char *argv[] )  {
    
+    //  scheduler should only 'route' the task array with the policy choice to the correct policy
+
+
     char *file_name; /* file name from the commandline */
     FILE *fp; /* file descriptor */
     task_t task_array[MAX_TASK_NUM]; // defines task_array
+    user_input_t user_input; // defines user_input struct
+
 
      int error_code;
     u_int i;
