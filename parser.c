@@ -29,7 +29,7 @@
 //     printf("quantum: %s\n", inputs ->quantum);
 // }
 
-int cmd__line_parser(char *cmd, user_input_t *inputs){
+int cmd_line_parser(char *cmd, user_input_t *inputs){
     
     char *args[INPUTARGS]; // array of string pointers, each entry = word
     int nargs = 0;  // counter tracks how many valid values in inputArgs
@@ -96,15 +96,15 @@ int cmd__line_parser(char *cmd, user_input_t *inputs){
 // =====================================================================
 // TESTING: Temporarily included for debugginf purposes
 // =====================================================================
-int main(void) {
-    char test_input1[] = "FCFS task.list 10";
-    char test_input2[] = "INVALID_COMMAND";
+// int main(void) {
+//     char test_input1[] = "FCFS task.list 10";
+//     char test_input2[] = "INVALID_COMMAND";
 
-    printf("--- Testing Valid Command ---\n");
-    cmd__line_parser(test_input1);
+//     printf("--- Testing Valid Command ---\n");
+//     cmd__line_parser(test_input1);
 
-    printf("\n--- Testing Invalid Command ---\n");
-    cmd__line_parser(test_input2);
+//     printf("\n--- Testing Invalid Command ---\n");
+//     cmd__line_parser(test_input2);
 
-    return 0;
-}
+//     return 0;
+// }

@@ -43,30 +43,67 @@ int main( int argc, char *argv[] )  {
     //  scheduler should only 'route' the task array with the policy choice to the correct policy
 
 
-    char *file_name; /* file name from the commandline */
+    // char *file_name; /* file name from the commandline */
     FILE *fp; /* file descriptor */
     task_t task_array[MAX_TASK_NUM]; // defines task_array
-    user_input_t user_input; // defines user_input struct
+    user_input_t choice; // defines user_input struct
 
+    int task_count = 0;
 
-     int error_code;
-    u_int i;
-    u_int count;
-
-    if (argc != 2) {
-        printf("Usage: input <file_name>\n");
+    //testing
+    char test_input[] = "task.list FCFS"; 
+    if(cmd_line_parser(test_input, &choice) != 0) {
         return EXIT_FAILURE;
     }
 
-    error_code = open_file(argv[1], &fp);
-    if (error_code == 1)
+    if(open_file(choice.file_name, &fp) != 0) {
         return EXIT_FAILURE;
+    }
 
-    read_file(fp, task_array, &count);
-    print_task_list(task_array, count);
+    read_file(fp, task_array, &task_count);
+    fclose(fp);
+
+    // TESTING: Ensure data is stored and passed properly
+
+    printf("\n=============================================\n");
+    printf("[TEST] 1. VERIFYING PARSER OUTPUT (user_input_t)\n");
+    printf("=============================================\n");
+    printf("Stored Filename: %s\n", choice.file_name);
+    printf("Stored Policy  : %s\n", choice.policy);
+    printf("Stored Quantum : %d\n", choice.quantum);
+
+    printf("\n=============================================\n");
+    printf("[TEST] 2. VERIFYING READ OUTPUT (task_array)\n");
+    printf("=============================================\n");
+    printf("Total Tasks Successfully Loaded: %d\n", task_count);
+    
+    for (int i = 0; i < task_count; i++) {
+        printf("Task [%d] -> PID: %u | Arrival: %u | Burst: %u\n", 
+               i, task_array[i].pid, task_array[i].arrival_time, task_array[i].burst_time);
+    }
+    printf("=============================================\n\n");
+    // =================================================================
+
+
+
+    //  int error_code;
+    // u_int i;
+    // u_int count;
+
+    // if (argc != 2) {
+    //     printf("Usage: input <file_name>\n");
+    //     return EXIT_FAILURE;
+    // }
+
+    // error_code = open_file(argv[1], &fp);
+    // if (error_code == 1)
+    //     return EXIT_FAILURE;
+
+    // read_file(fp, task_array, &count);
+    // print_task_list(task_array, count);
 
     // fcfs_policy(task_array, count);
 
-    fclose(fp);
+    // fclose(fp);
     return EXIT_SUCCESS;
 }
