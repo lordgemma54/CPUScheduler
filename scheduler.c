@@ -39,25 +39,10 @@
 #include "fcfs_policy.h"
 
 int main( int argc, char *argv[] )  {
-    
-    // ADDED
-    user_input_t current_input;
-
-    // input validation for these 
-    printf("Enter file name: ");
-    scanf("%s", current_input.file_name);
-
-    // printf("Enter policy type: ");
-    // scanf("%s", current_input.policy);
-
-    // printf("Enter time quantum: ");
-    // scanf("%d", current_input.quantum);
-    // END ADD
-
-
+   
     char *file_name; /* file name from the commandline */
     FILE *fp; /* file descriptor */
-    task_t task_array[MAX_TASK_NUM];
+    task_t task_array[MAX_TASK_NUM]; // defines task_array
 
      int error_code;
     u_int i;
@@ -75,7 +60,7 @@ int main( int argc, char *argv[] )  {
     read_file(fp, task_array, &count);
     print_task_list(task_array, count);
 
-    fcfs_policy(task_array, count);
+    // fcfs_policy(task_array, count);
 
     fclose(fp);
     return EXIT_SUCCESS;

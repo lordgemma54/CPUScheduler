@@ -1,11 +1,16 @@
 #see README for a manual compilation process
 CC = gcc
 CFLAGS = -g
-OBJ = open.o read.o print.o
+OBJ = open.o read.o print.o parser.o fcfs_policy.o
+all: test
 
-scheduler: $(OBJ) scheduler.c
+test: $(OBJ) scheduler.c
 	@echo "Creating the scheduler ..."
 	$(CC) -o $@ $^ $(CFLAGS)
+
+# scheduler: $(OBJ) scheduler.c
+# 	@echo "Creating the scheduler ..."
+# 	$(CC) -o $@ $^ $(CFLAGS)
 
 %.o: %.c %.h
 	@echo "Creating object files ..."
@@ -13,4 +18,5 @@ scheduler: $(OBJ) scheduler.c
 
 clean:
 	@echo "Deleting object and binary files ..."
-	rm -rvf *.o scheduler
+	rm -rvf *.o test 
+#test was scheduler

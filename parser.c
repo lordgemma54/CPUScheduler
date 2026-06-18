@@ -23,15 +23,14 @@ static struct {
     {NULL,      NULL}
 };
 
-void capture_input(const user_input_t *inputs) {
-    printf("filename: %s\n", inputs->file_name);
-    printf("policy: %s\n", inputs->policy);
-    printf("quantum: %s\n", inputs ->quantum);
-}
+// void capture_input(const user_input_t *inputs) {
+//     printf("filename: %s\n", inputs->file_name);
+//     printf("policy: %s\n", inputs->policy);
+//     printf("quantum: %s\n", inputs ->quantum);
+// }
 
 int cmd__line_parser(char *cmd){
-    time_t beforeMS, afterMS, millis;
-    uint32_t beforeMsec, afterMsec, msecs;
+    
     char *args[INPUTARGS]; // array of string pointers, each entry = word
     int nargs = 0;  // counter tracks how many valid values in inputArgs
     char *word;
@@ -58,7 +57,7 @@ int cmd__line_parser(char *cmd){
 
             // gettime(&beforeMS, &beforeMsec);
 
-            // result = cmdtable[i].func(nargs, args);
+            result = cmdtable[i].func(nargs, args);
 
             // gettime(&afterMS, &afterMsec);
 
