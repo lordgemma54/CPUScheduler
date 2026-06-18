@@ -36,12 +36,16 @@ void fcfs_policy(task_t task_list[], int size) {
                     ready_queue[0].finish_time = clock + 1;
         
                     finished_tasks[finish_count++] = ready_queue[0];
+                    
+                    printf("<time %d> process %d is finished...\n", ready_queue[0].finish_time, ready_queue[0].pid);
         
                     for(int j = 0; j < ready_count - 1; j++){
                         ready_queue[j] = ready_queue[j + 1]; // moves queued tasks forward 1
                     }
                     ready_count--;
                 }
+
+
             } else {
                 printf("Time %d: idle\n", clock);
             }
@@ -53,12 +57,13 @@ void fcfs_policy(task_t task_list[], int size) {
 //testing
 
     for(int k = 0; k < finish_count; k++) {
-        printf("PID: %u, Arrival: %u, Burst: %u, Response: %d, Start: %d\n",
+        printf("PID: %u, Arrival: %u, Burst: %u, Response: %d, Start: %d, Finish: %d\n",
         finished_tasks[k].pid,
         finished_tasks[k].arrival_time,
         finished_tasks[k].burst_time,
         finished_tasks[k].response_time,
-        finished_tasks[k].start_time);
+        finished_tasks[k].start_time,
+        finished_tasks[k].finish_time);
     }
     printf("Helooooo\n");
     
