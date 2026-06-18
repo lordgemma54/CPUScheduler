@@ -29,40 +29,53 @@
 //     printf("quantum: %s\n", inputs ->quantum);
 // }
 
-int cmd_line_parser(char *cmd, user_input_t *inputs){
-    
-    char *args[INPUTARGS]; // array of string pointers, each entry = word
-    int nargs = 0;  // counter tracks how many valid values in inputArgs
-    char *word;
-    char *context;
+int cmd_line_parser(int argc, char *argv[], user_input_t *inputs){
+    //char *cmd
+    // char *args[INPUTARGS]; // array of string pointers, each entry = word
+    // int nargs = 0;  // counter tracks how many valid values in inputArgs
+    // char *word;
+    // char *context;
     // int i, result;
 
-    for (word = strtok_r(cmd, " ", &context);
-        word != NULL;
-        word = strtok_r(NULL, " ", &context)) 
-        {
-            if(nargs >= INPUTARGS) {
-                printf("Command line has too many words\n");
-                return E2BIG;
-            }
-            args[nargs++] = word;
-        }
-        if (nargs == 0) {
-            return 0;
-        }
+    // manual token splitting -
+    // for (word = strtok_r(cmd, " ", &context);
+    //     word != NULL;
+    //     word = strtok_r(NULL, " ", &context)) 
+    //     {
+    //         if(nargs >= INPUTARGS) {
+    //             printf("Command line has too many words\n");
+    //             return E2BIG;
+    //         }
+    //         args[nargs++] = word;
+    //     }
+    //     if (nargs == 0) {
+    //         return 0;
+    //     }
 
-        if (nargs < 2) {
-            printf("Error: Missing arguments. Format required: file_name policy [quantum]\n");
-            return EINVAL;
-        }
-        inputs->file_name = args[0];
-        inputs->policy = args[1];
+    //     if (nargs < 2) {
+    //         printf("Error: Missing arguments. Format required: file_name policy [quantum]\n");
+    //         return EINVAL;
+    //     }
+
+        inputs->file_name = argv[1];
+        inputs->policy = argv[2];
+
+        if(strcmp(inputs->policy, "FCFS") != 0 &&
+           strcmp(inputs->policy, "RR") != 0 &&
+           strcmp(inputs->policy, "SRTF") != 0) {
+                printf("Error: No such scheduling policy '%s'. Use FCFS, RR, or SRTF. \n", inputs->policy);
+                return EINVAL;
+            }
 
         if(strcmp(inputs->policy, "RR") == 0) {
-            if(nargs <3) {
-                printf("Error: Round Robin policy requires a quantum.\n");
+            if(argc < 4) {
+                printf("Error: Round Robin policy requires a time quantum.\n");
                 return EINVAL;
-                inputs->quantum = atoi(args[2]);
+            }
+            inputs->quantum = atoi(argv[3]);
+            if(inputs->quantum <=0) {
+                printf("Error: Time quantum must be a positive integer.\n");
+                return EINVAL;
             }
         } else {
             inputs->quantum = 0;

@@ -47,21 +47,46 @@ int main( int argc, char *argv[] )  {
     FILE *fp; /* file descriptor */
     task_t task_array[MAX_TASK_NUM]; // defines task_array
     user_input_t choice; // defines user_input struct
-
     int task_count = 0;
 
-    //testing
-    char test_input[] = "task.list FCFS"; 
-    if(cmd_line_parser(test_input, &choice) != 0) {
+    //  int error_code;
+    // u_int i;
+    // u_int count;
+
+    if (argc < 3 || argc > 4) {
+        printf("Incorrect format.\n");
+        printf("Correct Input: <file_name> Choose a policy: [FCFS | RR |SRTF] Enter a time quantum if choosing RR: [time quantum]\n");
         return EXIT_FAILURE;
     }
 
-    if(open_file(choice.file_name, &fp) != 0) {
+    if(cmd_line_parser(argc, argv, &choice) != 0) {
+        return EXIT_FAILURE;
+    }
+
+    if (open_file(choice.file_name, &fp) != 0) {
+        printf("Error opening file: %s\n", choice.file_name);
         return EXIT_FAILURE;
     }
 
     read_file(fp, task_array, &task_count);
     fclose(fp);
+    // error_code = open_file(argv[1], &fp);
+    // if (error_code == 1)
+    //     return EXIT_FAILURE;
+
+
+    // //testing
+    // char test_input[] = "task.list FCFS"; 
+    // if(cmd_line_parser(test_input, &choice) != 0) {
+    //     return EXIT_FAILURE;
+    // }
+
+    // if(open_file(choice.file_name, &fp) != 0) {
+    //     return EXIT_FAILURE;
+    // }
+
+    // read_file(fp, task_array, &task_count);
+    // fclose(fp);
 
     // TESTING: Ensure data is stored and passed properly
 
@@ -86,18 +111,7 @@ int main( int argc, char *argv[] )  {
 
 
 
-    //  int error_code;
-    // u_int i;
-    // u_int count;
-
-    // if (argc != 2) {
-    //     printf("Usage: input <file_name>\n");
-    //     return EXIT_FAILURE;
-    // }
-
-    // error_code = open_file(argv[1], &fp);
-    // if (error_code == 1)
-    //     return EXIT_FAILURE;
+    
 
     // read_file(fp, task_array, &count);
     // print_task_list(task_array, count);

@@ -7,8 +7,6 @@ typedef struct input {
     int quantum;
 }user_input_t;
 
-void capture_input(const user_input_t *inputs);
-
-int cmd_line_parser(char *cmd, user_input_t *inputs);
+int cmd_line_parser(int argc, char *argv[], user_input_t *inputs);
 
 #endif
