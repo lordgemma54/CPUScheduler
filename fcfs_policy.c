@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "fcfs_policy.h"
-
+#include "stat_info.h"
 
 
 void fcfs_policy(task_t task_list[], int size) {
@@ -56,15 +56,10 @@ void fcfs_policy(task_t task_list[], int size) {
             clock++;
     }
 
-    // stat_info(finished_tasks, finish_count, clock);
+    compute_stats(finished_tasks, finish_count, clock);
 
 //testing
-
-// call stat_info here
-// avg wait time: 
-// avg response time:
-// avg turnaround time:
-// overall CPU usage: no idle time?
+/*
     for(int k = 0; k < finish_count; k++) {
         printf("PID: %u, Arrival: %u, Burst: %u, Response: %d, Start: %d, Finish: %d\n",
         finished_tasks[k].pid,
@@ -75,6 +70,6 @@ void fcfs_policy(task_t task_list[], int size) {
         finished_tasks[k].finish_time);
     }
     printf("Helooooo\n");
-    
+    */
 
 }

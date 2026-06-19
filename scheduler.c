@@ -92,6 +92,7 @@ int main( int argc, char *argv[] )  {
 
     // TESTING: Ensure data is stored and passed properly
 
+/*
     printf("\n=============================================\n");
     printf("[TEST] 1. VERIFYING PARSER OUTPUT (user_input_t)\n");
     printf("=============================================\n");
@@ -109,6 +110,7 @@ int main( int argc, char *argv[] )  {
                i, task_array[i].pid, task_array[i].arrival_time, task_array[i].burst_time);
     }
     printf("=============================================\n\n");
+*/
     // =================================================================
 
     // sort task_array in this file - send the sorted array to the policy

@@ -1,7 +1,7 @@
 #see README for a manual compilation process
 CC = gcc
 CFLAGS = -g
-OBJ = open.o read.o print.o parser.o fcfs_policy.o
+OBJ = open.o read.o print.o parser.o fcfs_policy.o stat_info.o
 all: test
 
 test: $(OBJ) scheduler.c
