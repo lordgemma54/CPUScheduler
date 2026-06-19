@@ -3,7 +3,7 @@
 
 typedef struct input {
     char *file_name;
-    const char *policy;
+    char *policy;
     int quantum;
 }user_input_t;
 

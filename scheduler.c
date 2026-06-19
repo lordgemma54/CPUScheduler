@@ -44,7 +44,23 @@ int main( int argc, char *argv[] )  {
    
     //  scheduler should only 'route' the task array with the policy choice to the correct policy
 
-    printf("Usage: scheduler task_list_file [FCFS|RR|SRTF] [time_quantum]");
+     /* Print file name */
+    printf("The file name is %s\n", argv[1]);
+
+    /* Print policy */
+    printf("The chosen policy is %s\n", argv[2]);
+
+    /* Handle the RR policy */
+    if (argc >= 3 && strcmp(argv[2], "RR") == 0) {
+        if (argc == 4){
+            printf("time_quantum is set to %s\n", argv[3]);
+        } else {
+            printf("Please enter time_quantum for the RR policy!\n");
+            return EXIT_FAILURE;
+        }
+    }
+
+    // printf("Usage: scheduler task_list_file [FCFS|RR|SRTF] [time_quantum]");
     // char *file_name; /* file name from the commandline */
     FILE *fp; /* file descriptor */
     task_t task_array[MAX_TASK_NUM]; // defines task_array
@@ -119,6 +135,9 @@ int main( int argc, char *argv[] )  {
         fcfs_policy(task_array, task_count);
     }
 
+    if(strcmp(choice.policy, "RR") == 0) {
+        rr_policy(task_array, task_count, choice.quantum);
+    }
     // if(strcmp(choice.policy, "RR") == 0) {
     //     rr_policy(task_array, task_count, choice.quantum);
     // }

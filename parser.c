@@ -57,6 +57,8 @@ int cmd_line_parser(int argc, char *argv[], user_input_t *inputs){
     //         return EINVAL;
     //     }
 
+    //validation here for file name?
+
         inputs->file_name = argv[1];
         inputs->policy = argv[2];
 

@@ -26,7 +26,7 @@ void compute_stats(task_t finished_tasks[], int finish_count, int clock){  // av
     double avg_response_time = (double)response_time_sum / finish_count;
     double avg_turnaround_time = (double) turnaround_time_sum / finish_count;
     if (clock > 0) {
-        cpu_usage = (burst_time_sum / clock) * 100;
+        cpu_usage = ((double)burst_time_sum / clock) * 100;
     } else {
         cpu_usage = 0.0;
     }

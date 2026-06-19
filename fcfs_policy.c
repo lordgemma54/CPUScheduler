@@ -17,7 +17,7 @@ void fcfs_policy(task_t task_list[], int size) {
     // getchar();
 
     while(finish_count < size) { //preps ready queue
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {  // proc only enters the rq when clock = arr_time
             if(task_list[i].arrival_time == clock) {
                 ready_queue[ready_count] = task_list[i];
                 ready_queue[ready_count].remaining_time = task_list[i].burst_time;
