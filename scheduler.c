@@ -55,6 +55,7 @@ int main( int argc, char *argv[] )  {
     read_file(fp, task_array, &task_count);
     fclose(fp);
 
+// the policy requested by the user is routed to the corresponding function
     if(strcmp(choice.policy, "FCFS") == 0) {
         fcfs_policy(task_array, task_count);
     }

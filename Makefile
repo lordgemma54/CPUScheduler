@@ -1,7 +1,7 @@
 #see README for a manual compilation process
 CC = gcc
 CFLAGS = -g
-OBJ = open.o read.o print.o parser.o fcfs_policy.o rr_policy.o srtf_policy.o stat_info.o
+OBJ = open.o read.o parser.o fcfs_policy.o rr_policy.o srtf_policy.o stat_info.o
 all: scheduler
 
 test: $(OBJ) scheduler.c
@@ -18,5 +18,5 @@ scheduler: $(OBJ) scheduler.c
 
 clean:
 	@echo "Deleting object and binary files ..."
-	rm -rvf *.o test 
-#test was scheduler
+	rm -rvf *.o
+

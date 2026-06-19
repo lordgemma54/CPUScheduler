@@ -22,7 +22,8 @@ void srtf_policy(task_t task_list[], int size) {
         }
         
         if(ready_count > 0) { 
-
+            
+            // finds the index of the process with the shortest remaining time
             int shortest_job_index = 0;
             task_t first_to_execute; 
 
@@ -32,12 +33,14 @@ void srtf_policy(task_t task_list[], int size) {
                 }
             }
 
+            // temporarily stores the process with the shortest remaining time
             first_to_execute = ready_queue[shortest_job_index];
 
             for(int j = shortest_job_index; j > 0; j--){
                 ready_queue[j] = ready_queue[j - 1]; 
             }
- 
+            
+            // moves the task with the shortest remaining time to the front of the queue
             ready_queue[0] = first_to_execute;
 
             if(ready_queue[0].start_time == -1) { 
