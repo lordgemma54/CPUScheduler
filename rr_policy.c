@@ -2,8 +2,6 @@
 #include "rr_policy.h"
 #include "stat_info.h"
 
-
-
 void rr_policy(task_t task_list[], int size, int quantum) {
     int clock = 0;
     int quantum_clock = 0; // to preempt the process after the time quantum has elapsed

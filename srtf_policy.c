@@ -22,29 +22,30 @@ void srtf_policy(task_t task_list[], int size) {
         }
         
         if(ready_count > 0) { // there is a process in the queue
-            int least_remaining_time = ready_queue[0].remaining_time;
-            task_t first_to_execute = ready_queue[0]; 
 
-            for(int i = 0; i < ready_count; i++) {
-                if(ready_queue[i].remaining_time < least_remaining_time) {
-                    first_to_execute = ready_queue[i]; 
+            int shortest_job_index = 0;
+            task_t first_to_execute; 
+
+            for(int i = 1; i < ready_count; i++) {
+                if(ready_queue[i].remaining_time < ready_queue[shortest_job_index].remaining_time) {
+                    shortest_job_index = i; 
                 }
             }
 
-            for(int j = ready_count - 1; j <= 0; j--){
-                ready_queue[j] = ready_queue[j + 1]; // moves queued tasks forward 1
-            }
+            first_to_execute = ready_queue[shortest_job_index];
 
-            
-            
+            for(int j = shortest_job_index; j > 0; j--){
+                ready_queue[j] = ready_queue[j - 1]; // moves queued tasks forward 1
+            }
+ 
+            ready_queue[0] = first_to_execute;
+
             if(ready_queue[0].start_time == -1) { // proc has never executed
                 ready_queue[0].start_time = clock;
                 ready_queue[0].response_time = clock - ready_queue[0].arrival_time;
             } 
 
             ready_queue[0].remaining_time--; // simulates the process running
-            quantum_clock++; // one cycle closer to being preempted
-
             printf("<time %d> process %d is running\n", clock, ready_queue[0].pid);
 
             if(ready_queue[0].remaining_time == 0) {
@@ -57,23 +58,14 @@ void srtf_policy(task_t task_list[], int size) {
                     ready_queue[j] = ready_queue[j + 1]; // moves queued tasks forward 1
                 }
                 ready_count--;
-                quantum_clock = 0;
-            } else if (quantum_clock == quantum) {
-            task_t preempted_task = ready_queue[0];
-            
-            for(int j = 0; j <= ready_count - 1; j++){
-                    ready_queue[j] = ready_queue[j + 1]; // moves queued tasks forward 1
-                }
-            
-            ready_queue[ready_count - 1] = preempted_task;
-            quantum_clock = 0;
-            }
+
+            } 
         }  else {
             printf("Time %d: idle\n", clock);
         }
     clock++;
     }
-    compute_stats(finished_tasks, finish_count, clock);
+   compute_stats(finished_tasks, finish_count, clock);
 }      
 
 
