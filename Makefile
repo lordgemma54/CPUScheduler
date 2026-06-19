@@ -2,15 +2,15 @@
 CC = gcc
 CFLAGS = -g
 OBJ = open.o read.o print.o parser.o fcfs_policy.o rr_policy.o srtf_policy.o stat_info.o
-all: test
+all: scheduler
 
 test: $(OBJ) scheduler.c
 	@echo "Creating the scheduler ..."
 	$(CC) -o $@ $^ $(CFLAGS)
 
-# scheduler: $(OBJ) scheduler.c
-# 	@echo "Creating the scheduler ..."
-# 	$(CC) -o $@ $^ $(CFLAGS)
+scheduler: $(OBJ) scheduler.c
+	@echo "Creating the scheduler ..."
+	$(CC) -o $@ $^ $(CFLAGS)
 
 %.o: %.c %.h
 	@echo "Creating object files ..."

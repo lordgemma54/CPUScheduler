@@ -13,54 +13,10 @@
 
 #define INPUTARGS 16
 
-// static struct {
-//     const char *name;
-//     int(*func)(int nargs, char **args);
-// } cmdtable[] = {
-//     {"FCFS",    fcfs_policy},
-//     {"RR",      rr_policy},
-//     {"SRTF",    srtf_policy},
-//     {NULL,      NULL}
-// };
-
-// void capture_input(const user_input_t *inputs) {
-//     printf("filename: %s\n", inputs->file_name);
-//     printf("policy: %s\n", inputs->policy);
-//     printf("quantum: %s\n", inputs ->quantum);
-// }
-
 int cmd_line_parser(int argc, char *argv[], user_input_t *inputs){
-    //char *cmd
-    // char *args[INPUTARGS]; // array of string pointers, each entry = word
-    // int nargs = 0;  // counter tracks how many valid values in inputArgs
-    // char *word;
-    // char *context;
-    // int i, result;
 
-    // manual token splitting -
-    // for (word = strtok_r(cmd, " ", &context);
-    //     word != NULL;
-    //     word = strtok_r(NULL, " ", &context)) 
-    //     {
-    //         if(nargs >= INPUTARGS) {
-    //             printf("Command line has too many words\n");
-    //             return E2BIG;
-    //         }
-    //         args[nargs++] = word;
-    //     }
-    //     if (nargs == 0) {
-    //         return 0;
-    //     }
-
-    //     if (nargs < 2) {
-    //         printf("Error: Missing arguments. Format required: file_name policy [quantum]\n");
-    //         return EINVAL;
-    //     }
-
-    //validation here for file name?
-
-        inputs->file_name = argv[1];
-        inputs->policy = argv[2];
+        inputs->file_name = argv[1]; // stores second arg as file name
+        inputs->policy = argv[2]; // stores policy choice
 
         if(strcmp(inputs->policy, "FCFS") != 0 &&
            strcmp(inputs->policy, "RR") != 0 &&
@@ -69,12 +25,12 @@ int cmd_line_parser(int argc, char *argv[], user_input_t *inputs){
                 return EINVAL;
             }
 
-        if(strcmp(inputs->policy, "RR") == 0) {
+        if(strcmp(inputs->policy, "RR") == 0) { // ensures theres an arg for time quantum
             if(argc < 4) {
                 printf("Error: Round Robin policy requires a time quantum.\n");
                 return EINVAL;
             }
-            inputs->quantum = atoi(argv[3]);
+            inputs->quantum = atoi(argv[3]); // converts ascii to integer 
             if(inputs->quantum <=0) {
                 printf("Error: Time quantum must be a positive integer.\n");
                 return EINVAL;
@@ -84,42 +40,4 @@ int cmd_line_parser(int argc, char *argv[], user_input_t *inputs){
         }
         return 0;
     }
-    // for (i = 0; cmdtable[i].name; i++) {
-    //     if(*cmdtable[i].name && !strcmp(args[0], cmdtable[i].name)) {
-    //         assert(cmdtable[i].func != NULL);
-
-            // gettime(&beforeMS, &beforeMsec);
-
-            // result = cmdtable[i].func(nargs, args);
-
-            // gettime(&afterMS, &afterMsec);
-
-            // getinterval(beforeMsec, beforeMS, afterMsec, afterMS, &millis, &msecs);
-
-            // printf("Operation took %lu.%09lu milliseconds\n",
-            //         (unsigned long) millis,
-            //         (unsigned long) msecs);
-
-                // return result;
-
-        // }
-
-
-   
-
     
-// =====================================================================
-// TESTING: Temporarily included for debugginf purposes
-// =====================================================================
-// int main(void) {
-//     char test_input1[] = "FCFS task.list 10";
-//     char test_input2[] = "INVALID_COMMAND";
-
-//     printf("--- Testing Valid Command ---\n");
-//     cmd__line_parser(test_input1);
-
-//     printf("\n--- Testing Invalid Command ---\n");
-//     cmd__line_parser(test_input2);
-
-//     return 0;
-// }

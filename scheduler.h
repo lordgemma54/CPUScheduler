@@ -1,12 +1,3 @@
-/*
- * COMP 3500: Project 5 Scheduling
- * Xiao Qin
- * Version 1.0  11/18/2019
- *
- * This source code shows how to conduct separate compilation.
- *
- * scheduler.h: The header file of scheduler.c
- */
 #ifndef _SCHEDULER_H_
 #define _SCHEDULER_H_
 
@@ -27,3 +18,9 @@ typedef struct task_info {
 } task_t;
 
 #endif
+
+/*
+ * COMP 3500: Project 5 Scheduling
+ * Rahul Venkatesh
+ * 6/19/2026
+ */

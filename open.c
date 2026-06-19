@@ -10,6 +10,6 @@ open_file(char *name, FILE **file_descriptor)
         return 1;
     }
 
-    printf("Open file: %s\n", name);
+    // printf("Open file: %s\n", name);
     return 0;
 }

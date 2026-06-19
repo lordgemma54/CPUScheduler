@@ -38,32 +38,10 @@ void compute_stats(task_t finished_tasks[], int finish_count, int clock){  // av
     printf("Average turnaround time: %.2f\n", avg_turnaround_time);
     printf("Overall CPU usage: %.2f%%\n", cpu_usage);
     printf("*******************************************************\n");
+
+    /*
+ * COMP 3500: Project 5 Scheduling
+ * Rahul Venkatesh
+ * 6/19/2026
+ */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// time_t beforeMS, afterMS, millis;
-//     uint32_t beforeMsec, afterMsec, msecs;
-
-            // gettime(&beforeMS, &beforeMsec);
-
-            // result = cmdtable[i].func(nargs, args);
-
-            // gettime(&afterMS, &afterMsec);
-
-            // getinterval(beforeMsec, beforeMS, afterMsec, afterMS, &millis, &msecs);
-
-            // printf("Operation took %lu.%09lu milliseconds\n",
-            //         (unsigned long) millis,
-            //         (unsigned long) msecs);
-
-            //     return result;
