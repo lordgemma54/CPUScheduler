@@ -7,8 +7,6 @@ typedef struct input {
     int quantum;
 }user_input_t;
 
-int cmd_line_parser(int argc, char *argv[], user_input_t *inputs);
-
 #endif
 
 /*
